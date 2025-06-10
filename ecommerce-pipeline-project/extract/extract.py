@@ -18,7 +18,9 @@ def get_data_directory() -> str:
     Raises:
         FileNotFoundError: If the data directory doesn't exist
     """
-    data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+    # Get the absolute path to the project root directory
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_dir = os.path.join(project_root, 'data')
     
     if not os.path.exists(data_dir):
         raise FileNotFoundError(
